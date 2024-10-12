@@ -4,7 +4,7 @@ class PositionedCharacter {
    constructor(public character: Character, public position: number) {
       if (!(character instanceof Character)) {
          throw new Error(
-            "character must be instance of Character or its children"
+            "character must be instance of 'Character' or its children"
          );
       }
 

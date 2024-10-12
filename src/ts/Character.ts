@@ -1,5 +1,12 @@
 class Character {
-   static types: string[] = [
+   health: number;
+   attack: number;
+   defence: number;
+   isEnemy: boolean;
+   distance: number;
+   distanceAttack: number;
+
+   static types = [
       "bowman",
       "swordsman",
       "magician",
@@ -7,13 +14,6 @@ class Character {
       "vampire",
       "daemon",
    ];
-
-   health: number;
-   attack: number;
-   defence: number;
-   isEnemy: boolean;
-   distance: number;
-   distanceAttack: number;
 
    constructor(public level: number, public type: string = "generic") {
       this.health = 50;

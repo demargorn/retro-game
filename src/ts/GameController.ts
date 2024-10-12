@@ -23,7 +23,7 @@ class GameController {
 
    constructor(
       public gamePlay: GamePlay,
-      public stateService?: GameStateService
+      public stateService: GameStateService
    ) {
       this.gamePlay = gamePlay;
       this.stateService = stateService;
@@ -50,8 +50,8 @@ class GameController {
             : 0;
       this.gameState = new GameState(maxScore);
       this.gamePlay.drawUi(this.gameState.theme);
-      const playerTeam = generateTeam([Bowman, Swordsman, Magician], 1, 2);
-      const enemyTeam = generateTeam([Daemon, Undead, Vampire], 1, 2);
+      const playerTeam = generateTeam([Bowman, Swordsman, Magician], 1, 3);
+      const enemyTeam = generateTeam([Daemon, Undead, Vampire], 1, 3);
       this.initTeam(playerTeam, enemyTeam);
       this.saveGame();
    }
@@ -261,7 +261,7 @@ class GameController {
    }
 
    playersPositions(): number[] {
-      const charIndexes = [];
+      const charIndexes: number[] = [];
       for (
          let i = 0;
          i < this.gamePlay.boardSize * this.gamePlay.boardSize;
@@ -276,7 +276,7 @@ class GameController {
    }
 
    enemyPositions(): number[] {
-      const charIndexes = [];
+      const charIndexes: number[] = [];
       for (
          let i = 0;
          i < this.gamePlay.boardSize * this.gamePlay.boardSize;
@@ -311,8 +311,8 @@ class GameController {
          return false;
       });
       if (attackerEnemy) {
-         const def = playerPositions.find((p) =>
-            this.checkAttackAllowed(attackerEnemy, p.position)
+         const def = playerPositions.find((player) =>
+            this.checkAttackAllowed(attackerEnemy, player.position)
          );
          this.attack(attackerEnemy, def);
       } else {
@@ -418,16 +418,16 @@ class GameController {
          );
          this.gameState.isGameOver = true;
       } else {
-         let enemyTeam;
+         let enemyTeam: Character[];
          playerTeam.forEach((character) => character.levelUp());
          if (this.gameState.level === 2) {
             this.gamePlay.drawUi(themes.desert);
             this.gameState.theme = themes.desert;
             playerTeam = playerTeam.concat(
-               generateTeam([Bowman, Swordsman, Magician], 1, 1)
+               generateTeam([Bowman, Magician, Swordsman], 1, 1)
             );
             enemyTeam = generateTeam(
-               [Daemon, Undead, Vampire],
+               [Daemon, Vampire, Undead],
                2,
                playerTeam.length
             );
@@ -436,10 +436,10 @@ class GameController {
             this.gamePlay.drawUi(themes.arctic);
             this.gameState.theme = themes.arctic;
             playerTeam = playerTeam.concat(
-               generateTeam([Bowman, Swordsman, Magician], 2, 2)
+               generateTeam([Bowman, Magician, Swordsman], 2, 2)
             );
             enemyTeam = generateTeam(
-               [Daemon, Undead, Vampire],
+               [Daemon, Vampire, Undead],
                3,
                playerTeam.length
             );
@@ -448,10 +448,10 @@ class GameController {
             this.gamePlay.drawUi(themes.mountain);
             this.gameState.theme = themes.mountain;
             playerTeam = playerTeam.concat(
-               generateTeam([Bowman, Swordsman, Magician], 3, 2)
+               generateTeam([Bowman, Magician, Swordsman], 3, 2)
             );
             enemyTeam = generateTeam(
-               [Daemon, Undead, Vampire],
+               [Daemon, Vampire, Undead],
                4,
                playerTeam.length
             );
