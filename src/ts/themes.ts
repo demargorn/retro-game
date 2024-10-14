@@ -1,8 +1,8 @@
-const themes = {
-  prairie: "prairie",
-  desert: "desert",
-  arctic: "arctic",
-  mountain: "mountain",
-};
+enum Themes {
+   Prairie = "prairie",
+   Desert = "desert",
+   Arctic = "arctic",
+   Mountain = "mountain",
+}
 
-export { themes };
+export { Themes };

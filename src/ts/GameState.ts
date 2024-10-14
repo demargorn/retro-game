@@ -1,4 +1,4 @@
-import { themes } from "./themes";
+import { Themes } from "./themes";
 import { PositionedCharacter } from "./PositionedCharacter";
 
 class GameState {
@@ -18,7 +18,7 @@ class GameState {
       this.isLevelUp = null;
       this.maxScore = maxScore;
       this.positions = [];
-      this.theme = themes.prairie;
+      this.theme = Themes.Prairie;
    }
 }
 

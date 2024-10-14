@@ -14,9 +14,9 @@ class GamePlay {
    loadGameListeners: TypeCallBackEmpty[];
    container: HTMLElement;
    boardEl: HTMLElement;
-   newGameEl: HTMLElement;
-   saveGameEl: HTMLElement;
-   loadGameEl: HTMLElement;
+   newGameEl: HTMLButtonElement;
+   saveGameEl: HTMLButtonElement;
+   loadGameEl: HTMLButtonElement;
 
    constructor() {
       this.boardSize = 8;
@@ -29,6 +29,14 @@ class GamePlay {
       this.newGameListeners = [];
       this.saveGameListeners = [];
       this.loadGameListeners = [];
+   }
+
+   static showError(message: string): void {
+      alert(message);
+   }
+
+   static showMessage(message: string): void {
+      alert(message);
    }
 
    bindToDOM(container: HTMLElement): void {
@@ -170,14 +178,6 @@ class GamePlay {
    onLoadGameClick(event: Event): void {
       event.preventDefault();
       this.loadGameListeners.forEach((o) => o.call(null));
-   }
-
-   static showError(message: string): void {
-      alert(message);
-   }
-
-   static showMessage(message: string): void {
-      alert(message);
    }
 
    selectCell(index: number, color: string = "yellow"): void {

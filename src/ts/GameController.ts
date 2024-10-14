@@ -1,5 +1,5 @@
-import { themes } from "./themes";
-import { cursors } from "./cursors";
+import { Themes } from "./themes";
+import { Cursors } from "./cursors";
 
 import { GamePlay } from "./GamePlay";
 import { GameState } from "./GameState";
@@ -67,8 +67,8 @@ class GameController {
             this.gamePlay.drawUi(this.gameState.theme);
             this.gamePlay.redrawPositions(this.gameState.positions);
          }
-      } catch (e) {
-         GamePlay.showError(e.message);
+      } catch (error) {
+         GamePlay.showError(error.message);
       }
    }
 
@@ -196,7 +196,7 @@ class GameController {
                this.checkAttackAllowed(this.currentPositionCharacter, curCell)
             ) {
                this.gamePlay.selectCell(curCell, "red");
-               this.gamePlay.setCursor(cursors.crosshair);
+               this.gamePlay.setCursor(Cursors.Crosshair);
             } else if (
                !this.checkAttackAllowed(
                   this.currentPositionCharacter,
@@ -204,24 +204,24 @@ class GameController {
                ) &&
                position.character.isEnemy
             ) {
-               this.gamePlay.setCursor(cursors.notallowed);
+               this.gamePlay.setCursor(Cursors.Notallowed);
             } else {
-               this.gamePlay.setCursor(cursors.pointer);
+               this.gamePlay.setCursor(Cursors.Pointer);
             }
          } else {
-            this.gamePlay.setCursor(cursors.pointer);
+            this.gamePlay.setCursor(Cursors.Pointer);
          }
          const { character } = position;
          this.gamePlay.showCellTooltip(getInfoTemplate(character), curCell);
       } else if (currentPositionCharacter) {
          if (this.checkDistanceAllowed(currentPositionCharacter, curCell)) {
             this.gamePlay.selectCell(curCell, "green");
-            this.gamePlay.setCursor(cursors.pointer);
+            this.gamePlay.setCursor(Cursors.Pointer);
          } else {
-            this.gamePlay.setCursor(cursors.notallowed);
+            this.gamePlay.setCursor(Cursors.Notallowed);
          }
       } else {
-         this.gamePlay.setCursor(cursors.auto);
+         this.gamePlay.setCursor(Cursors.Auto);
       }
    }
 
@@ -421,8 +421,8 @@ class GameController {
          let enemyTeam: Character[];
          playerTeam.forEach((character) => character.levelUp());
          if (this.gameState.level === 2) {
-            this.gamePlay.drawUi(themes.desert);
-            this.gameState.theme = themes.desert;
+            this.gamePlay.drawUi(Themes.Desert);
+            this.gameState.theme = Themes.Desert;
             playerTeam = playerTeam.concat(
                generateTeam([Bowman, Magician, Swordsman], 1, 1)
             );
@@ -433,8 +433,8 @@ class GameController {
             );
          }
          if (this.gameState.level === 3) {
-            this.gamePlay.drawUi(themes.arctic);
-            this.gameState.theme = themes.arctic;
+            this.gamePlay.drawUi(Themes.Arctic);
+            this.gameState.theme = Themes.Arctic;
             playerTeam = playerTeam.concat(
                generateTeam([Bowman, Magician, Swordsman], 2, 2)
             );
@@ -445,8 +445,8 @@ class GameController {
             );
          }
          if (this.gameState.level === 4) {
-            this.gamePlay.drawUi(themes.mountain);
-            this.gameState.theme = themes.mountain;
+            this.gamePlay.drawUi(Themes.Mountain);
+            this.gameState.theme = Themes.Mountain;
             playerTeam = playerTeam.concat(
                generateTeam([Bowman, Magician, Swordsman], 3, 2)
             );

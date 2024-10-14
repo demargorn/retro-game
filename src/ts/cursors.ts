@@ -1,8 +1,8 @@
-const cursors = {
-  auto: "auto",
-  pointer: "pointer",
-  crosshair: "crosshair",
-  notallowed: "not-allowed",
-};
+enum Cursors {
+   Auto = "auto",
+   Pointer = "pointer",
+   Crosshair = "crosshair",
+   Notallowed = "not-allowed",
+}
 
-export { cursors };
+export { Cursors };
