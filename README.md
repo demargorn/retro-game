@@ -2,7 +2,7 @@
 
 Учебный проект написан на языке TypeScript и собран при помощи Webpack
 
-![alt text](src/img/exapmle.png)
+![alt text](src/img/game.png)
 
 ## Задачи
 
